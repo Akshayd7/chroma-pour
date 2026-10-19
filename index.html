@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Chroma Pour - Candy Color Puzzle</title>
-  <style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<title>Chroma Pour - Candy Color Puzzle</title>
+<style>
+
     :root {
       --plum: #4a2c5a;
       --plum-soft: #7a5a8c;
@@ -497,9 +498,9 @@
     }
 
     .mini-jar i { display: block; flex: 1; }
-    .mini-jar i.r { background: #ff4d6d; }
-    .mini-jar i.b { background: #3ea6ff; }
-    .mini-jar i.y { background: #ffd60a; }
+    .mini-jar i.r { background: #ec2f68; }
+    .mini-jar i.b { background: #17a9e8; }
+    .mini-jar i.y { background: #ffc400; }
 
     .mini-arrow {
       font-size: 1.1rem;
@@ -793,9 +794,16 @@
       .hero-mascot-wrap canvas { width: 110px; height: 96px; }
       .modal-card { gap: 8px; padding: 14px 14px 16px; }
     }
-  </style>
+  
+/* app shell */
+html, body, #root { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #4fc3f7; }
+.game-root { position: fixed; inset: 0; }
+
+</style>
 </head>
 <body>
+<div class="game-root">
+
   <div id="app">
     <!-- Top HUD -->
     <header class="hud-header">
@@ -1011,8 +1019,12 @@
     </div>
   </div>
 
-  <script>
-    (function () {
+  
+</div>
+<script>
+
+
+
       "use strict";
 
       /* =========================================================================
@@ -1020,16 +1032,16 @@
        * ========================================================================= */
       const CAPACITY = 4;
       const JUICE_COLORS = [
-        { id: 0, name: "Strawberry", hex: "#ff4d6d", top: "#ff8fa3", deep: "#d1264c" },
-        { id: 1, name: "Orange",     hex: "#ff8500", top: "#ffb35c", deep: "#d65f00" },
-        { id: 2, name: "Lemon",      hex: "#ffd60a", top: "#ffea80", deep: "#e0af00" },
-        { id: 3, name: "Kiwi",       hex: "#63d93c", top: "#a8f584", deep: "#3da81c" },
-        { id: 4, name: "Blueberry",  hex: "#4361ee", top: "#8ea6ff", deep: "#2a3fc9" },
-        { id: 5, name: "Grape",      hex: "#a55eea", top: "#d0a5ff", deep: "#7a35c4" },
-        { id: 6, name: "Mint",       hex: "#2ec4b6", top: "#8ef5e8", deep: "#139c8f" },
-        { id: 7, name: "Bubblegum",  hex: "#ff70a6", top: "#ffb3d1", deep: "#e0477f" },
-        { id: 8, name: "Cherry",     hex: "#e5383b", top: "#ff8f91", deep: "#b01f22" },
-        { id: 9, name: "Sky Soda",   hex: "#4cc9f0", top: "#a3e7ff", deep: "#1d96c4" }
+        { id: 0, name: "Strawberry",  hex: "#ec2f68", top: "#ee7ea0", deep: "#c41046" },
+        { id: 1, name: "Orange",      hex: "#f96d00", top: "#fa9b51", deep: "#b24e00" },
+        { id: 2, name: "Lemon",       hex: "#ffc400", top: "#fad457", deep: "#b88d00" },
+        { id: 3, name: "Kiwi",        hex: "#3ba013", top: "#5bdd28", deep: "#23610a" },
+        { id: 4, name: "Blueberry",   hex: "#2240c4", top: "#5c74dc", deep: "#162b89" },
+        { id: 5, name: "Grape",       hex: "#a63fe0", top: "#c589e7", deep: "#821cbc" },
+        { id: 6, name: "Mint",        hex: "#0a8a80", top: "#16cfc1", deep: "#044843" },
+        { id: 7, name: "Bubblegum",   hex: "#ff45b6", top: "#fc9ad5", deep: "#fd0099" },
+        { id: 8, name: "Cherry",      hex: "#b3121f", top: "#e33442", deep: "#730a13" },
+        { id: 9, name: "Sky Soda",    hex: "#17a9e8", top: "#66c2ea", deep: "#0f7aa9" },
       ];
       const LID_COLORS = ["#ff5da2", "#ff9f1c", "#ffd60a", "#63d93c", "#3ea6ff", "#a55eea"];
       const OUTLINE = "#4a2c5a";
@@ -3732,9 +3744,16 @@
         },
         save() {
           try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { return null; }
+        },
+        startLevel(n) {
+          startOverlay.classList.add("hidden");
+          winOverlay.classList.add("hidden");
+          loadLevel(n);
         }
       };
-    })();
-  </script>
+
+  
+
+</script>
 </body>
 </html>
